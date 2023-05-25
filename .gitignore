@@ -1,0 +1,12 @@
+/.vscode
+/a.out
+/dict.c
+/dict.h
+/dict2.c
+/eliza
+/eliza.c
+/lex.yy.c
+/nodes.y
+/y.tab.c
+/y.tab.h
+/yacc.y

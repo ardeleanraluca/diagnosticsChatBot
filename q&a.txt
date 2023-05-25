@@ -1,0 +1,121 @@
+COMPILAM CU -I
+
+[I] [have a] [TOOTHACHE].
+[My] [tooth] [hurts].
+[I] [have a] [sore throat].
+[I] [woke up with a] [sore throat].
+Why are my eyes watery.
+
+
+Keywords: [headache,stomachache,bellyache,heartache,backache, soreness, sore shoulder,sore throat, sinus pressure, stuffed up nose
+          stuffy nose, temperature, fever]
+
+Actions: [hurt, hurts, hurting
+         sting, stings, stinging,
+         burn, burns, burning,
+         feel, feels, feeling,
+         suffer, suffers, suffering
+
+        perceive, perceived, perceiving
+        sense, sensed, sensing,
+        detect, detected, detecting,
+        notice, noticed, noticing,
+        observe, observed, observing,
+        identify, identifiedm identifying,
+        experience, experienced, experiencing,
+        endure, endured, enduring,
+
+        sneeze, sneezed, sneezing
+        breath, breathing,
+        swell, swelling
+        remember, remembering
+        forget, forgot, forgetting
+         
+         ]
+
+Adverbs: [good, bad, lightly, sick, fine, dizzy, nauseous, tired, acute]
+
+* HAVE A + NOUNS: [discomfort, pain, difficulty, difficult, problem, trouble]
+
+
+ BodyParts: [head, leg, legs, arm, arms, tooth, teeth, foot, feet, ankle, back, wrist,
+            stomach, belly, eyes, heart, abdomen, ears, throat, pelvis, pelvic area,
+            nose]
+
+
+
+Client ex:
+I'm fine.
+I feel sick.
+Not so good.
+Not very well.
+I don't feel well.
+I'm sick.
+
+Doctor questions:
+How do you feel (today)?
+How are you feeling?
+Is everything okay?
+
+What's the matter?
+What's wrong?
+
+
+[cold] : [sore throat, sneeze, cough, fever, headache, shivering, pain in the throat]
+[(the) measles] : [fever, red rash,red dots,itchy] + last additional question before diagnosis : [It typically occurs in childhood]
+[a rash] : [red spots on the skin, itchy, Uncomfortable ]
+[a sprain] : [pain in: wrist/ankle, ] + last additional question before diagnosis : [caused by suddenly twisting it.]
+[sunburn] : [inflammation, red skin, ] + last additional question before diagnosis : [overexposure to the ultraviolet rays of the sun]
+[seasonal allergies]: [red eyes, watery eyes, itchy eyes, nose, coughing, sneezing] + [what season is it?]
+[broken bones] : [fractured, broken] -> solution [ and are usually set in a cast to keep the bone in place while it heals]
+[bruise] : [dark area, painful area, skin] + last additional question before diagnosis : [ has your body have been hurt]
+[amnesia] : [problem,remembering, forget]
+[tooth decay] : [toothache, jaw pain, earache, black tooth]
+[Diabetes] : [ thirsty, passing urine, tired, weight loss, persistent infections]
+[leukaemia]: [pale skin, tiredness, breathlessness,  bleeding, repeated infections]
+[Alzheimer's disease]:[confusion, disorientation, getting lost, problems with speech and language, personality changes, hallucinations, low mood, anxiety]
+[Asthma] : [wheezing, shortness of breath, tight chest, coughing, breathing faster, drowsy, exhausted, dizzy, rapid heartbeat]
+
+
+PATTERNS:
+[I have] + noun
+[I feel] + adverb/noun
+poate sa fie si ACTION ACTION => I have been experiencing bleeding
+
+- patterns:
+
+? I POSVB KEYWORD  
+? I POSVB NOUN           
+
+? I POSVB NOUN  LINK BODYBART
+? I POSVB ACTION
+? I POSVB ACTION ACTION
+? POSVB ACTION KEYWORD
+
+
+- I'm sorry to hear that you're not feeling well. 
+    Can you tell me more about your symptoms? 
+    Are you experiencing any specific pains or discomforts? 
+    It would be helpful to know more so that I can provide you with the best medical advice.
+
+- I'm sorry to hear that you're experiencing a headache.
+- It's important to seek medical attention right away if you are having trouble breathing.
+-  Eye pain can be caused by a variety of factors, such as eye strain, dry eyes, or even an eye infection.
+-  There are many potential causes for this type of symptom, including an allergic reaction, an insect bite, or a skin infection. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
