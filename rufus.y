@@ -90,7 +90,6 @@
     void addSymptom(char * simptom);
     void rm(char* word);
 
-
     %}
 
     %union {
@@ -562,7 +561,7 @@
             }
 
             | YOU '\n' {
-                printf("DR:We were discussing you, not me. \n");
+                printf("DR: We were discussing you, not me.\nME: ");
             }
 
             | error '\n' {
@@ -576,9 +575,7 @@
 
             ;
 
-
-
-                                        
+                
 
 
     %%                     /* C code */

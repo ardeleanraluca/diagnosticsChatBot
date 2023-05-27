@@ -35,6 +35,8 @@ I. Dr. Rufus has suite of **default questions**, regarding the client's well bei
 II. Dr. Rufus has suite of **custom questions**, based on the previous client's answers:
     - we calculate the first two diseases whose symptoms were found most often in the answers given by the client  
     - we choose random between those two and then we choose random between its other symptoms, one that hasn't occured yet, and it is specific for the desease, to guide the conversation towards one of the two diseases (e.g. **"Do you also have [SYMPTOM]?"**).
+    - in case the client has an **affirmative** answer, the symptom will be taken into consideration
+    - otherwise, it will be **removed** from the potential symptoms, the deases in which is included, being less likely to be the chosen.
 
 III. Based on a given symptom, Dr. Rufus will say in which deseases the symptoms are most often encountered.
 IV. Sometimes, Dr. Rufus will show his regrets regarding the client's pain, by appending the symptom to a default answer (e.g. **"I'm sorry to hear that you have [SYMPTOM]."**).
