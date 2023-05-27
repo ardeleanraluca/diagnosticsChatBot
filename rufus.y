@@ -296,7 +296,7 @@
             }
             
             | WORSE '\n'{
-               printf("DR: Let's try to fix that. \n");
+               printf("DR: Let's try to fix that! \n");
             }
 
             | I POSVB NOUN '\n' {  
