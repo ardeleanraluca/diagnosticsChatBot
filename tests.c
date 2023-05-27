@@ -142,6 +142,13 @@ void rm(char* word){
     }
 }
 
+// void copyData(){
+//     int i,j;
+//     for(i=0;17;i++)
+//         for(j=0;illness[i][j];j++)
+//             strcpy(new[i][j], illness[i][j]);
+// }
+
 
 int main(){
 

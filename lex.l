@@ -238,6 +238,7 @@ broken |
 fracture |
 tiredness |
 sick | 
+itchy |
 fine |
 breathless |
 thirsty |

@@ -13,7 +13,7 @@
     int questions=0;
     char **simptoms;
 
-    char remember[20];
+    char remember[50];
     char notrepeat;
 
     int scores[17]={0};
@@ -29,7 +29,7 @@
     char defaultQuestions[7][100]={
         "What else bothers you?",
         "What else hurts?",
-        "When did your symptoms start?",
+        "What else seems to be the problem?",
         "Has the pain been getting better or worse?",
         "Do you have any other pain?",
         "Can you tell me more about your symptoms? ",
@@ -85,7 +85,7 @@
     void restartSimptoms();
     char** getPotentialSimptoms(char *full[], char *found[], int *k);
     void get2Max(int arr[], int arr_size, int* m1, int* m2);
-    char** getPotentialIlness(char *simptom);
+    char** getPotentialIlness(char *simptom, int *k);
     const char** aloc();
     void addSymptom(char * simptom);
     void rm(char* word);
@@ -103,7 +103,6 @@
     %token NO
     %token<text> MY
     %token<text> POSVB
-    %token<text> PAINVB
     %token<text> BODYPART
     %token<text> KEYWORD
     %token<text> ACTION
@@ -116,7 +115,6 @@
     %token<text> YOU
     %token<text> WHY
     %token<text> DOIHAVE
-    %token ANYTHING
     %type<text> program
     %type<text> line
     
@@ -136,11 +134,27 @@
              
                 if(questions<QUESTIONS){      
                     questions++;
-                    printf("%d CONTOR INTREBARI",questions);
+                    /* printf("%d CONTOR INTREBARI",questions); */
                     
-                    if(!err){                 
+                    if(!err){          
+
+                        char defaultMessage[100];
+                        strcpy(defaultMessage,"There are many potential causes for this type of symptom, including ");
+                        char ** causes = aloc();
+                        int size_causes;
+                        causes = getPotentialIlness($2,&size_causes);
+
+                        for(int i=0;i<size_causes-1;i++){
+                            strcat(defaultMessage,causes[i]);
+                            strcat(defaultMessage,", ");
+                        }
+
+                        strcat(defaultMessage,causes[size_causes-1]);
+                        strcat(defaultMessage,". "); 
+
+
                         /* printSimptoms();     */
-                        int randomTypeQuestion = rand()%2;
+                        int randomTypeQuestion = rand()%3;
                         /* printf("random :%d \n",randomTypeQuestion); */
 
                         int randomSorry = -1;
@@ -151,9 +165,12 @@
                         
                         if(randomTypeQuestion == 0){
                             if(randomSorry==1){
-                                printf("DR: I'm sorry to hear that you're experiencing %s.\n",$2);
+                                printf("DR: I'm sorry to hear that you're experiencing %s.\n",remember);
                             }
-                            printf("DR: %s\n",defaultQuestions[rand()%7]);
+                            else if(random==0){
+                                printf("DR: %s",defaultMessage);
+                            }
+                            printf("DR: %s\n", defaultQuestions[rand()%7]);
                             printf("ME: ");
                         }
                         else{
@@ -177,30 +194,33 @@
                                 int size_pontentialSymptoms;                              
                                 char **pontentialSymptoms = getPotentialSimptoms(illnessSymptoms[m1], simptoms,&size_pontentialSymptoms);
 
-                                printf("AICIII %d\n",size_pontentialSymptoms);
+//                                printf("AICIII %d\n",size_pontentialSymptoms);
 
                                 if(size_pontentialSymptoms>1){
 
                                 int randomSymptoms = rand() % (size_pontentialSymptoms-1) + 1;
-                                randomSymptoms = 1;
-                                
+                            
 
-                                for(int i=0;i<size_pontentialSymptoms;i++){
+                                /* for(int i=0;i<size_pontentialSymptoms;i++){
                                     printf("%s ", pontentialSymptoms[i]);
-                                } 
+                                }  */
 
                                 
                                 if(randomSorry==1){
-                                    printf("DR: I'm sorry to hear that you're experiencing %s.\n",remember);
+                                    printf("DR: I'm sorry to hear that you're experiencing  %s.\n",remember);
                                 }
-                                printf("INDEX: %d\n",randomSymptoms);
-                                printf("DR: Do you also have %s?\nME: ",pontentialSymptoms[randomSymptoms]);
+                                else if(random==0){
+                                    printf("DR: %s",defaultMessage);
+                                }
+
+                               // printf("INDEX: %d\n",randomSymptoms);
+                                printf("DR: %s Do you also have %s?\nME: ",defaultMessage,pontentialSymptoms[randomSymptoms]);
                                 strcpy(remember,pontentialSymptoms[randomSymptoms]);
 
 
                                 }  else {
                                     questions=QUESTIONS;
-                                     printf("DR: %s","Let's recap. You said you have: ");
+                                    printf("DR: %s","Let's recap. You said you have: ");
                                     printSimptoms();
                                     printf("\nAm I right?\nME: ");
                                 }
@@ -216,7 +236,7 @@
                                 int size_pontentialSymptoms;                              
                                 char **pontentialSymptoms = getPotentialSimptoms(illnessSymptoms[m2], simptoms,&size_pontentialSymptoms);
 
-                                printf("AICIII %d\n",size_pontentialSymptoms);
+                                /* printf("AICIII %d\n",size_pontentialSymptoms); */
 
                                if(size_pontentialSymptoms>1){
 
@@ -224,18 +244,21 @@
                                 int randomSymptoms = rand() % (size_pontentialSymptoms-1) + 1;
                                 
                                
-                                for(int i=0;i<size_pontentialSymptoms;i++){
+                                /* for(int i=0;i<size_pontentialSymptoms;i++){
                                     printf("%s ", pontentialSymptoms[i]);
-                                } 
+                                }  */
                                
 
                                 if(randomSorry==1){
                                     printf("DR: I'm sorry to hear that you're experiencing %s.\n",remember);
                                     
                                 }
-                                printf("INDEX: %d\n",randomSymptoms);
+                                else if(random==0){
+                                    printf("DR: %s",defaultMessage);
+                                }
+                                //printf("INDEX: %d\n",randomSymptoms);
                                 
-                                printf("DR: Do you also have %s?\nME: ",pontentialSymptoms[randomSymptoms]);
+                                printf("DR: %s Do you also have %s?\nME: ",defaultMessage,pontentialSymptoms[randomSymptoms]);
                                 strcpy(remember,pontentialSymptoms[randomSymptoms]);
 
 
@@ -270,6 +293,7 @@
                 // printf("\t\t\t\t\t\t\t\t\t\t");
                 printf("DR: %s\n\n",firstQuestions[rand()%5]);
                 printf("ME: ");
+                
             }
             
             ;
@@ -317,7 +341,7 @@
                 addSymptom($3);
                 addSymptom($4);
                 score($3);
-                score($3);
+                score($4);
                 
                 strcpy($$,$3);
                 strcpy(remember,$3);
@@ -332,7 +356,7 @@
                 addSymptom($3);
                 addSymptom($4);
                 score($3);
-                score($3);
+                score($4);
 
                 strcpy($$ , $4);
                 strcpy(remember,$4);
@@ -537,7 +561,11 @@
                 addSymptom($2);
             }
 
-            | error {
+            | YOU '\n' {
+                printf("DR:We were discussing you, not me. \n");
+            }
+
+            | error '\n' {
                 yyclearin;
                 printf("DR: I am not sure I understand you fully. Can you repeat?\n");
                 printf("ME: ");
@@ -643,7 +671,7 @@
         *k = 0;
         int s3;
 
-        char e[20];
+        char e[50];
         int ok = 0;
 
         char** rez = (char**) malloc(50 * sizeof(char*));
@@ -724,16 +752,17 @@
         return rez;
     }
 
-    char** getPotentialIlness(char *simptom){
-        size_t i = 0,j = 0,k=0;
+    char** getPotentialIlness(char *simptom, int *k){
+        size_t i = 0,j = 0;
         int s3;
+        *k=0;
 
         char** rez = (char**) malloc(50 * sizeof(char*));
         for (i = 0; i < 50; i++) { 
-            rez[i] = (char*) malloc(50 * sizeof(char)); 
+            rez[i] = (char*) malloc(100 * sizeof(char)); 
         }
         int ok = 0;
-        k = 0;
+        *k = 0;
         i=0;
 
         while(i<17) 
@@ -741,12 +770,24 @@
             j=0;
             while(illnessSymptoms[i][j] != 0) {
                 
-            if(strcmp(illnessSymptoms[i][j], simptom)==0)
-            {
-                strcpy(rez[k++], illnessSymptoms[i][0]);
-                break;
+                if(strcmp(illnessSymptoms[i][j], simptom)==0)
+                {
+                    strcpy(rez[(*k)++], illnessSymptoms[i][0]);
+                    break;
+                }
+                j++;
             }
-            j++;
+
+            j=0;
+            while(illnessAux[i][j] != 0) {
+                
+                if(strcmp(illnessAux[i][j], simptom)==0)
+                {
+                    
+                    strcpy(rez[(*k)++], illnessSymptoms[i][0]);
+                    break;
+                }
+                j++;
             }
 
             i++;
