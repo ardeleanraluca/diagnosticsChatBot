@@ -75,7 +75,7 @@ What's wrong?
 [leukaemia]: [pale skin, tiredness, breathlessness,  bleeding, repeated infections]
 [Alzheimer's disease]:[confusion, disorientation, getting lost, problems with speech and language, personality changes, hallucinations, low mood, anxiety]
 [Asthma] : [wheezing, shortness of breath, tight chest, coughing, breathing faster, drowsy, exhausted, dizzy, rapid heartbeat]
-
+[Conjunctivitis] : [redness,itching,tearing,burning,red,eyes,eyelids]
 
 PATTERNS:
 [I have] + noun
@@ -85,12 +85,32 @@ poate sa fie si ACTION ACTION => I have been experiencing bleeding
 - patterns:
 
 ? I POSVB KEYWORD  
-? I POSVB NOUN           
+- How severe is your [KEYWORD]?
+
+? I POSVB NOUN      
+- How severe is your [NOUN]?
 
 ? I POSVB NOUN  LINK BODYBART
+-
+
 ? I POSVB ACTION
+-
+
 ? I POSVB ACTION ACTION
+-
+
 ? POSVB ACTION KEYWORD
+-
+
+? I POSVB  ADVERB - doar cand avem feel/am
+- I feel bad => What makes you feel [ADVERB]. Does something hurt?
+- I am [adverb] => Why are you [ADVERB]. Does something hurt?
+
+? MY BODYPART POSVB ACTION
+-
+
+? MY BODYPART ACTION
+-
 
 
 - I'm sorry to hear that you're not feeling well. 
@@ -104,9 +124,23 @@ poate sa fie si ACTION ACTION => I have been experiencing bleeding
 -  There are many potential causes for this type of symptom, including an allergic reaction, an insect bite, or a skin infection. 
 
 
+EX RASPUNSURI:
+What else bothers you?
+What else hurts?
+When did your symptoms start?
+Has the pain been getting better or worse?
 
 
+ 
+>Do I have [...] ? + Why  +WHAT                => I can not tell for sure. Let's see more symptoms. What else hurts?
+> default answer                         => [I am not sure I understand you fully]
+>[YOU] ... ?                             => We were discussing you, not me.
+>RARES ALG  'getPotentialSimptoms()'     => Might you also have [functionResult] ?
 
+
+- FUTURE DEV 
+> what months is it for allergies 
+> dam -1 -1 la m1 m2 pentru default questions cand nu avem simptome
 
 
 
